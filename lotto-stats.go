@@ -68,21 +68,50 @@ func main () {
 
 	// print out the results
 	fmt.Printf("\n\nThe percentage of each number being chosen over the last %v times is\n", count)
-
+	pad := false
 	for i := 0; i < 69; i++ {
+		// pad digits 1-9 (indices 0 - 8)
+		if (i < 9) {
+			pad = true
+		}
+
 		// round the current value's probability to the nearest 1000th
 		s := fmt.Sprintf("%.3f", float64(normalNums[i])*100/float64(count))
-		//fmt.Printf("%v:\t%v%%\n", i+1, float64(normalNums[i])*100/float64(count))
-		fmt.Printf("%v:\t%v%%\n", i+1, s)
+
+		// convert to string for possible padding and go ahead and assign the next number in the array of 0-68
+		lottoNum := strconv.Itoa(i+1)
+
+		// pad the string and reset pad to false
+		if pad {
+			lottoNum = "0" + lottoNum
+			pad = false
+		}
+
+		fmt.Printf("%v:\t%v%%\n", lottoNum, s)
 	}
 
 	fmt.Printf("\n\nThe percentage of each number being chosen as the powerball over the last %v times is\n",
 		count)
 
 	for i := 0; i < 26; i++ {
+		// pad digits 1-9 (indices 0 - 8)
+		if (i < 9) {
+			pad = true
+		}
+
 		// round the current value's probability to the nearest 1000th
 		s := fmt.Sprintf("%.3f", float64(powerballNums[i])*100/float64(count))
-		fmt.Printf("%v:\t%v%%\n", i+1, s)
+
+		// convert to string for possible padding and go ahead and assign the next number in the array of 0-68
+		lottoNum := strconv.Itoa(i+1)
+
+		// pad the string and reset pad to false
+		if pad {
+			lottoNum = "0" + lottoNum
+			pad = false
+		}
+
+		fmt.Printf("%v:\t%v%%\n", lottoNum, s)
 	}
 
 }
