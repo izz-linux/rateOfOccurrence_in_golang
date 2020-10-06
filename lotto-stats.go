@@ -57,9 +57,10 @@ func main () {
 			powerballNums[lottoNum-1]++
 			// we've reached the end of this "draw" and therefore want to reset i
 			i = 0
+			// increment the counter for total number of drawings
+			count++
 		}
-		// increment the counter for total number of drawings
-		count++
+
 	}
 
 	// close the file since we're done using it
